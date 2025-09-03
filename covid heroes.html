@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Heroes News Report Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4ecdc4;
+            --secondary: #667eea;
+            --danger: #ff6b6b;
+            --success: #51cf66;
+            --warning: #ffd43b;
+            --dark: #343a40;
+            --light: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .stage {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .stage-icon {
+            font-size: 2em;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+
+        .timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--warning);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .role-card {
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .role-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: var(--primary);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .emotion-tag {
+            display: inline-block;
+            background: var(--light);
+            border: 1px solid var(--primary);
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .emotion-tag.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .star {
+            color: #ddd;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .star.active {
+            color: var(--warning);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📺 Community Heroes News Report Project</h1>
+            <p>Upper-Intermediate (B2) Level • 60 minutes • 15 students</p>
+        </header>
+
+        <!-- STAGE 1: WARM-UP & VOCAB ACTIVATION -->
+        <div id="stage1" class="stage">
+            <div class="stage-header">
+                <i class="fas fa-comments stage-icon"></i>
+                <h2>Stage 1: Warm-up & Vocab Activation</h2>
+                <div class="timer" id="timer1">5:00</div>
+            </div>
+            <div class="form-group">
+                <label>Discussion Question:</label>
+                <textarea placeholder="When did you last feel RELIEVED about help arriving? What makes you feel IMPRESSED by someone's actions?" rows="3"></textarea>
+            </div>
+            <button class="btn" onclick="nextStage()">Continue to Stage 2</button>
+        </div>
+
+        <!-- STAGE 2: PRE-VIEWING -->
+        <div id="stage2" class="stage hidden">
+            <div class="stage-header">
+                <i class="fas fa-film stage-icon"></i>
+                <h2>Stage 2: Pre-viewing</h2>
+                <div class="timer" id="timer2">5:00</div>
+            </div>
+            <div class="form-group">
+                <label>Group Formation:</label>
+                <select>
+                    <option>Select group...</option>
+                    <option>PPE Heroes</option>
+                    <option>Food Heroes</option>
+                    <option>Transport Heroes</option>
+                    <option>Community Support Heroes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Role Assignment:</label>
+                <div class="role-card">
+                    <div class="role-title">📺 News Anchor</div>
+                    <p>Present the report introduction</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-title">🎥 Field Reporter</div>
+                    <p>Report from the scene</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-title">✍️ Script Writer</div>
+                    <p>Organize the story structure</p>
+                </div>
+                <div class="role-card">
+                    <div class="role-title">🎭 Interviewee</div>
+                    <p>Play a hero being interviewed</p>
+                </div>
+            </div>
+            <button class="btn" onclick="nextStage()">Continue to Stage 3</button>
+        </div>
+
+        <!-- STAGE 3: WHILE-VIEWING -->
+        <div id="stage3" class="stage hidden">
+            <div class="stage-header">
+                <i class="fas fa-play-circle stage-icon"></i>
+                <h2>Stage 3: While-viewing</h2>
+                <div class="timer" id="timer3">15:00</div>
+            </div>
+            <div class="video-container">
+                <video controls poster="poster.jpg">
+                    <source src="/video/How Everyday Heroes Ar...ighting Coronavirus.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="form-group">
+                <label>Focus Questions:</label>
+                <ul>
+                    <li>What types of heroes do you see?</li>
+                    <li>How might they be feeling?</li>
+                    <li>How do others react to their help?</li>
+                </ul>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <button class="btn" onclick="nextStage()">Continue to Stage 4</button>
+        </div>
+
+        <!-- STAGE 4: GROUP WORK PREPARATION -->
+        <div id="stage4" class="stage hidden">
+            <div class="stage-header">
+                <i class="fas fa-users stage-icon"></i>
+                <h2>Stage 4: Group Work Preparation</h2>
+                <div class="timer" id="timer4">10:00</div>
+            </div>
+            <div class="form-group">
+                <label>News Report Template:</label>
+                <div class="role-card">
+                    <div class="role-title">📋 News Report Structure</div>
+                    <p>Introduction (30s) • Field Report (90s) • Hero Interview (45s) • Conclusion (15s)</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Vocabulary Integration Tips:</label>
+                <div class="emotion-tags">
+                    <span class="emotion-tag" data-emotion="horrified">horrified</span>
+                    <span class="emotion-tag" data-emotion="frustrated">frustrated</span>
+                    <span class="emotion-tag" data-emotion="thrilled">thrilled</span>
+                    <span class="emotion-tag" data-emotion="impressed">impressed</span>
+                    <span class="emotion-tag" data-emotion="relieved">relieved</span>
+                    <span class="emotion-tag" data-emotion="tense">tense</span>
+                    <span class="emotion-tag" data-emotion="devastated">devastated</span>
+                    <span class="emotion-tag" data-emotion="awkward">awkward</span>
+                </div>
+            </div>
+            <button class="btn" onclick="nextStage()">Continue to Stage 5</button>
+        </div>
+
+        <!-- STAGE 5: GROUP WORK - CREATING NEWS REPORTS -->
+        <div id="stage5" class="stage hidden">
+            <div class="stage-header">
+                <i class="fas fa-edit stage-icon"></i>
+                <h2>Stage 5: Creating News Reports</h2>
+                <div class="timer" id="timer5">20:00</div>
+            </div>
+            <div class="form-group">
+                <label>Script Editor:</label>
+                <textarea placeholder="Write your news report script here..." rows="8"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Role Assignment:</label>
+                <select>
+                    <option>Select role...</option>
+                    <option>News Anchor</option>
+                    <option>Field Reporter</option>
+                    <option>Script Writer</option>
+                    <option>Interviewee</option>
+                </select>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <button class="btn" onclick="nextStage()">Continue to Stage 6</button>
+        </div>
+
+        <!-- STAGE 6: PRESENTATIONS -->
+        <div id="stage6" class="stage hidden">
+            <div class="stage-header">
+                <i class="fas fa-tv stage-icon"></i>
+                <h2>Stage 6: Presentations</h2>
+                <div class="timer" id="timer6">15:00</div>
+            </div>
+            <div class="form-group">
+                <label>Audience Task:</label>
+                <p>Listen for natural use of emotion vocabulary and note one impressive thing about each hero category.</p>
+            </div>
+            <div class="assessment-grid">
+                <div class="assessment-card">
+                    <h3>PPE Heroes</h3>
+                    <div class="rating-stars">
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                    </div>
+                    <textarea placeholder="Notes..." rows="3"></textarea>
+                </div>
+                <div class="assessment-card">
+                    <h3>Food Heroes</h3>
+                    <div class="rating-stars">
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                    </div>
+                    <textarea placeholder="Notes..." rows="3"></textarea>
+                </div>
+                <div class="assessment-card">
+                    <h3>Transport Heroes</h3>
+                    <div class="rating-stars">
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                    </div>
+                    <textarea placeholder="Notes..." rows="3"></textarea>
+                </div>
+                <div class="assessment-card">
+                    <h3>Community Support Heroes</h3>
+                    <div class="rating-stars">
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                        <i class="fas fa-star star" onclick="rateStar(this)"></i>
+                    </div>
+                    <textarea placeholder="Notes..." rows="3"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-success" onclick="nextStage()">Continue to Stage 7</button>
+        </div>
+
+        <!-- STAGE 7: WRAP-UP DISCUSSION -->
+        <div id="stage7" class="stage hidden">
+            <div class="stage-header">
+                <i class="fas fa-comments-alt stage-icon"></i>
+                <h2>Stage 7: Wrap-up Discussion</h2>
+                <div class="timer" id="timer7">5:00</div>
+            </div>
+            <div class="form-group">
+                <label>Reflection Questions:</label>
+                <ul>
+                    <li>Which hero story made you feel most THRILLED? Why?</li>
+                    <li>Would you feel TENSE or excited about helping in a crisis?</li>
+                    <li>What would make you feel RELIEVED during difficult times?</li>
+                    <li>How did creating these reports make you feel about your own community?</li>
+                </ul>
+            </div>
+            <button class="btn btn-danger" onclick="resetAll()">Reset Lesson</button>
+        </div>
+
+        <footer>
+            <p>© 2023 Community Heroes News Report Project</p>
+        </footer>
+    </div>
+
+    <script>
+        let currentStage = 1;
+
+        function nextStage() {
+            if (currentStage < 7) {
+                document.getElementById(`stage${currentStage}`).classList.add('hidden');
+                currentStage++;
+                document.getElementById(`stage${currentStage}`).classList.remove('hidden');
+                
+                // Start timer for new stage
+                startTimer(currentStage);
+            }
+        }
+
+        function startTimer(stageNum) {
+            let timeLeft = [5, 5, 15, 10, 20, 15, 5][stageNum - 1];
+            const timerElement = document.getElementById(`timer${stageNum}`);
+            
+            const interval = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `${Math.floor(timeLeft / 60)}:${String(timeLeft % 60).padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    alert(`Time's up for Stage ${stageNum}!`);
+                }
+            }, 1000);
+        }
+
+        function rateStar(element) {
+            const stars = element.parentElement.children;
+            Array.from(stars).forEach((star, index) => {
+                star.classList.toggle('active', index <= Array.from(stars).indexOf(element));
+            });
+        }
+
+        function toggleEmotionTag(tag) {
+            tag.classList.toggle('active');
+        }
+
+        // Initialize timers
+        document.addEventListener('DOMContentLoaded', () => {
+            startTimer(1);
+        });
+
+        function resetAll() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>

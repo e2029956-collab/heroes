@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Heroes News Report Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea, #4ecdc4);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .welcome-message {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: #495057;
+        }
+
+        .action-button {
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .action-button:hover {
+            background: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📺 Community Heroes News Report Project</h1>
+            <p>Upper-Intermediate (B2) Level • Interactive Digital Workbook</p>
+        </header>
+
+        <div class="main-content">
+            <p class="welcome-message">
+                Welcome to your interactive English learning experience! This digital workbook contains all the materials for the Community Heroes News Report project.
+            </p>
+            
+            <button class="action-button" onclick="window.location.href='everyday-hero.html'">
+                <i class="fas fa-play-circle"></i>
+                Open Interactive Workbook
+            </button>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Embedded Video Content</h3>
+                    <p>Watch heroes in action and analyze their emotions</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Structured Learning Path</h3>
+                    <p>7 progressive stages with built-in timers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Interactive Assessments</h3>
+                    <p>Real-time feedback and progress tracking</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Community Heroes News Report Project | Designed for Upper-Intermediate Learners</p>
+        </footer>
+    </div>
+
+    <script>
+        // Check if user has opened the workbook before
+        if (localStorage.getItem('visitedWorkbook')) {
+            setTimeout(() => {
+                document.querySelector('.action-button').innerHTML += '<i class="fas fa-redo ml-2"></i>';
+            }, 1000);
+        } else {
+            localStorage.setItem('visitedWorkbook', 'true');
+        }
+    </script>
+</body>
+</html>
