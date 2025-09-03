@@ -41,8 +41,8 @@
             color: white;
             padding: 30px;
             border-radius: 10px;
-            margin-bottom: 30px;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         h1 {
@@ -54,8 +54,8 @@
             background: white;
             border-radius: 10px;
             padding: 25px;
-            margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
             position: relative;
         }
 
@@ -69,8 +69,8 @@
 
         .stage-icon {
             font-size: 2em;
-            margin-right: 15px;
             color: var(--primary);
+            margin-right: 15px;
         }
 
         .timer {
@@ -82,64 +82,6 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: bold;
-        }
-
-        .role-card {
-            background: var(--light);
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .role-title {
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            margin: 20px 0;
-            border-radius: 10px;
-            background: #000;
-        }
-
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .btn-danger {
-            background: var(--danger);
-        }
-
-        .btn-success {
-            background: var(--success);
         }
 
         .form-group {
@@ -186,14 +128,35 @@
             border: 1px solid var(--primary);
             padding: 5px 10px;
             border-radius: 15px;
-            margin: 5px;
             cursor: pointer;
+            margin: 5px;
             transition: all 0.3s ease;
         }
 
         .emotion-tag.active {
             background: var(--primary);
             color: white;
+        }
+
+        .action-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .action-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
         }
 
         .assessment-grid {
@@ -207,7 +170,6 @@
             background: white;
             border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .rating-stars {
@@ -226,14 +188,33 @@
             color: var(--warning);
         }
 
-        .hidden {
-            display: none !important;
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
         footer {
             text-align: center;
             padding: 20px;
             color: #6c757d;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -241,7 +222,7 @@
     <div class="container">
         <header>
             <h1>📺 Community Heroes News Report Project</h1>
-            <p>Upper-Intermediate (B2) Level • 60 minutes • 15 students</p>
+            <p>Upper-Intermediate (B2) Level • Interactive Digital Workbook</p>
         </header>
 
         <!-- STAGE 1: WARM-UP & VOCAB ACTIVATION -->
@@ -255,7 +236,7 @@
                 <label>Discussion Question:</label>
                 <textarea placeholder="When did you last feel RELIEVED about help arriving? What makes you feel IMPRESSED by someone's actions?" rows="3"></textarea>
             </div>
-            <button class="btn" onclick="nextStage()">Continue to Stage 2</button>
+            <button class="action-button" onclick="nextStage()">Continue to Stage 2</button>
         </div>
 
         <!-- STAGE 2: PRE-VIEWING -->
@@ -266,7 +247,7 @@
                 <div class="timer" id="timer2">5:00</div>
             </div>
             <div class="form-group">
-                <label>Group Formation:</label>
+                <label>Set context:</label>
                 <select>
                     <option>Select group...</option>
                     <option>PPE Heroes</option>
@@ -279,22 +260,22 @@
                 <label>Role Assignment:</label>
                 <div class="role-card">
                     <div class="role-title">📺 News Anchor</div>
-                    <p>Present the report introduction</p>
+                    <p>Presents the report introduction</p>
                 </div>
                 <div class="role-card">
                     <div class="role-title">🎥 Field Reporter</div>
-                    <p>Report from the scene</p>
+                    <p>Reports from the scene</p>
                 </div>
                 <div class="role-card">
                     <div class="role-title">✍️ Script Writer</div>
-                    <p>Organize the story structure</p>
+                    <p>Organizes the story structure</p>
                 </div>
                 <div class="role-card">
                     <div class="role-title">🎭 Interviewee</div>
-                    <p>Play a hero being interviewed</p>
+                    <p>Plays a hero being interviewed</p>
                 </div>
             </div>
-            <button class="btn" onclick="nextStage()">Continue to Stage 3</button>
+            <button class="action-button" onclick="nextStage()">Continue to Stage 3</button>
         </div>
 
         <!-- STAGE 3: WHILE-VIEWING -->
@@ -305,10 +286,15 @@
                 <div class="timer" id="timer3">15:00</div>
             </div>
             <div class="video-container">
-                <video controls poster="poster.jpg">
-                    <source src="/video/How Everyday Heroes Ar...ighting Coronavirus.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe 
+                  width="100%" 
+                  height="480" 
+                  src="https://www.youtube.com/embed/5pDNEKhbf14" 
+                  title="Community Heroes News Report"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
             </div>
             <div class="form-group">
                 <label>Focus Questions:</label>
@@ -321,7 +307,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" style="width: 0%"></div>
             </div>
-            <button class="btn" onclick="nextStage()">Continue to Stage 4</button>
+            <button class="action-button" onclick="nextStage()">Continue to Stage 4</button>
         </div>
 
         <!-- STAGE 4: GROUP WORK PREPARATION -->
@@ -351,7 +337,7 @@
                     <span class="emotion-tag" data-emotion="awkward">awkward</span>
                 </div>
             </div>
-            <button class="btn" onclick="nextStage()">Continue to Stage 5</button>
+            <button class="action-button" onclick="nextStage()">Continue to Stage 5</button>
         </div>
 
         <!-- STAGE 5: GROUP WORK - CREATING NEWS REPORTS -->
@@ -378,7 +364,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" style="width: 0%"></div>
             </div>
-            <button class="btn" onclick="nextStage()">Continue to Stage 6</button>
+            <button class="action-button" onclick="nextStage()">Continue to Stage 6</button>
         </div>
 
         <!-- STAGE 6: PRESENTATIONS -->
@@ -390,7 +376,7 @@
             </div>
             <div class="form-group">
                 <label>Audience Task:</label>
-                <p>Listen for natural use of emotion vocabulary and note one impressive thing about each hero category.</p>
+                <p>Listen for natural use of emotion vocabulary and note one thing that made you feel **impressed** about each hero category.</p>
             </div>
             <div class="assessment-grid">
                 <div class="assessment-card">
@@ -438,7 +424,7 @@
                     <textarea placeholder="Notes..." rows="3"></textarea>
                 </div>
             </div>
-            <button class="btn btn-success" onclick="nextStage()">Continue to Stage 7</button>
+            <button class="action-button btn-success" onclick="nextStage()">Continue to Stage 7</button>
         </div>
 
         <!-- STAGE 7: WRAP-UP DISCUSSION -->
@@ -457,11 +443,11 @@
                     <li>How did creating these reports make you feel about your own community?</li>
                 </ul>
             </div>
-            <button class="btn btn-danger" onclick="resetAll()">Reset Lesson</button>
+            <button class="action-button btn-danger" onclick="resetAll()">Reset Lesson</button>
         </div>
 
         <footer>
-            <p>© 2023 Community Heroes News Report Project</p>
+            <p>&copy; 2023 Community Heroes News Report Project | Designed for Upper-Intermediate Learners</p>
         </footer>
     </div>
 
