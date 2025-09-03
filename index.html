@@ -75,6 +75,15 @@
             transform: translateY(-3px);
         }
 
+        .error-hint {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+        }
+
         .features {
             display: flex;
             justify-content: space-around;
@@ -117,10 +126,20 @@
                 Welcome to your interactive English learning experience! This digital workbook contains all the materials for the Community Heroes News Report project.
             </p>
             
-            <button class="action-button" onclick="window.location.href='everyday-hero.html'">
+            <button class="action-button" onclick="openWorkbook()">
                 <i class="fas fa-play-circle"></i>
                 Open Interactive Workbook
             </button>
+
+            <div class="error-hint" id="errorHint">
+                <p><i class="fas fa-exclamation-triangle mr-2"></i> Oops! The workbook file wasn't found. Please check:</p>
+                <ul style="text-align: left; margin: 10px 0;">
+                    <li>File name should be <code>everyday-hero.html</code></li>
+                    <li>The file must be in the root of your repository</li>
+                    <li>If you renamed the file, update the link below</li>
+                </ul>
+                <p>Current file: <code id="fileName">everyday-hero.html</code></p>
+            </div>
 
             <div class="features">
                 <div class="feature-card">
@@ -155,13 +174,23 @@
     </div>
 
     <script>
-        // Check if user has opened the workbook before
-        if (localStorage.getItem('visitedWorkbook')) {
-            setTimeout(() => {
-                document.querySelector('.action-button').innerHTML += '<i class="fas fa-redo ml-2"></i>';
-            }, 1000);
-        } else {
-            localStorage.setItem('visitedWorkbook', 'true');
+        // Check if workbook file exists
+        fetch('everyday-hero.html')
+            .then(response => {
+                if (!response.ok) {
+                    document.getElementById('errorHint').style.display = 'block';
+                    document.querySelector('.action-button').disabled = true;
+                    document.querySelector('.action-button').style.opacity = '0.5';
+                }
+            })
+            .catch(() => {
+                document.getElementById('errorHint').style.display = 'block';
+                document.querySelector('.action-button').disabled = true;
+                document.querySelector('.action-button').style.opacity = '0.5';
+            });
+
+        function openWorkbook() {
+            window.location.href = 'everyday-hero.html';
         }
     </script>
 </body>
